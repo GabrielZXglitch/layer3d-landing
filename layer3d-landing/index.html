@@ -1,289 +1,159 @@
 <!DOCTYPE html>
-<html class="dark scroll-smooth" lang="pt-BR">
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Layer3D Labs - Manufatura Aditiva</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layer3D Labs | Manufatura Aditiva de Alta Precisão</title>
     
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Preload fonts to prevent FOUT (Flash of Unstyled Text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     
-    <!-- CSS Modules -->
+    <!-- CSS Architecture -->
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/sections.css">
-
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "outline": "#a18d7b",
-                        "tertiary": "#6cd8ff",
-                        "background": "#0E0E10",
-                        "secondary-container": "#474649",
-                        "on-secondary": "#303032",
-                        "surface-container-highest": "#353437",
-                        "on-background": "#e5e1e4",
-                        "on-tertiary-container": "#00495c",
-                        "error": "#ffb4ab",
-                        "surface-tint": "#ffb86a",
-                        "tertiary-fixed": "#baeaff",
-                        "surface-variant": "#353437",
-                        "primary": "#ffbe78",
-                        "primary-container": "#f39c2d",
-                        "secondary-fixed-dim": "#c8c6c8",
-                        "on-error": "#690005",
-                        "on-surface": "#e5e1e4",
-                        "on-primary": "#492900",
-                        "surface-container-lowest": "#050506",
-                        "secondary": "#c8c6c8",
-                        "secondary-fixed": "#e4e2e4",
-                        "surface-dim": "#131315",
-                        "tertiary-fixed-dim": "#59d5ff",
-                        "inverse-on-surface": "#313032",
-                        "inverse-primary": "#895200",
-                        "primary-fixed-dim": "#ffb86a",
-                        "on-tertiary-fixed-variant": "#004d62",
-                        "surface": "#1A1A1C",
-                        "surface-bright": "#39393b",
-                        "error-container": "#93000a",
-                        "inverse-surface": "#e5e1e4",
-                        "on-error-container": "#ffdad6",
-                        "on-primary-container": "#623900",
-                        "primary-fixed": "#ffdcbc",
-                        "outline-variant": "#534435",
-                        "on-surface-variant": "#d9c3af",
-                        "tertiary-container": "#00beec",
-                        "surface-container-low": "#131315",
-                        "on-tertiary-fixed": "#001f29",
-                        "on-secondary-fixed-variant": "#474649",
-                        "on-secondary-fixed": "#1b1b1d",
-                        "surface-container-high": "#2a2a2c",
-                        "on-tertiary": "#003544",
-                        "on-primary-fixed-variant": "#683d00",
-                        "on-primary-fixed": "#2c1700",
-                        "on-secondary-container": "#b7b4b7",
-                        "surface-container": "#201f21"
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    spacing: {
-                        "margin-mobile": "20px",
-                        "container-max": "1280px",
-                        "gutter": "24px",
-                        "unit": "8px",
-                        "margin-desktop": "64px"
-                    },
-                    fontFamily: {
-                        "body-md": ["Inter", "sans-serif"],
-                        "headline-lg-mobile": ["Space Grotesk", "sans-serif"],
-                        "mono-data": ["Space Grotesk", "sans-serif"],
-                        "body-sm": ["Inter", "sans-serif"],
-                        "headline-md": ["Space Grotesk", "sans-serif"],
-                        "headline-xl": ["Space Grotesk", "sans-serif"],
-                        "body-lg": ["Inter", "sans-serif"],
-                        "headline-lg": ["Space Grotesk", "sans-serif"],
-                        "label-caps": ["Inter", "sans-serif"]
-                    },
-                    fontSize: {
-                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
-                        "mono-data": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "400" }],
-                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
-                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
-                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
-                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600" }]
-                    }
-                }
-            }
-        }
-    </script>
 </head>
-<body class="antialiased overflow-x-hidden text-on-surface bg-background">
+<body>
 
-    <!-- TopNavBar -->
-    <nav id="main-nav" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent border-b border-transparent shadow-none">
-        <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
-            <div class="flex items-center gap-3">
-                <img alt="Layer3D Labs Logo" class="w-8 h-8 object-contain" src="assets/logo.svg" />
-                <span class="font-headline-md text-headline-md font-bold text-on-surface">Layer3D Labs</span>
-            </div>
-            <div class="hidden md:flex gap-8 items-center font-body-md text-body-md">
-                <a class="text-primary border-b-2 border-primary pb-1" href="#inicio">Início</a>
-                <a class="text-on-surface-variant hover:text-primary transition-colors amber-glow-text" href="#catalogo">Catálogo</a>
-                <a class="text-on-surface-variant hover:text-primary transition-colors amber-glow-text" href="#processo">Processo</a>
-                <a class="text-on-surface-variant hover:text-primary transition-colors amber-glow-text" href="#contato">Contato</a>
-            </div>
-            <a class="hidden md:inline-flex items-center justify-center px-6 py-2 rounded-lg border border-primary text-primary font-body-md text-body-md hover:bg-primary/10 transition-all amber-glow pulse-amber" href="https://wa.me/5500000000000">
-                Solicitar Orçamento
+    <!-- NAVBAR -->
+    <nav class="navbar animate-fade-up">
+        <div class="container nav-content">
+            <a href="#inicio" class="nav-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                  <path d="M50 40 L150 40 L160 60 L40 60 Z" fill="#F39C2D" />
+                  <path d="M40 70 L160 70 L170 90 L30 90 Z" fill="#F39C2D" fill-opacity="0.8" />
+                  <path d="M30 100 L170 100 L180 120 L20 120 Z" fill="#F39C2D" fill-opacity="0.6" />
+                </svg>
+                <span class="font-display">Layer3D <span style="color: var(--color-accent)">Labs</span></span>
             </a>
-            <button id="mobile-menu-btn" class="md:hidden text-on-surface">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
+            
+            <div class="nav-links">
+                <a href="#inicio">Início</a>
+                <a href="#catalogo">Catálogo</a>
+                <a href="#processo">Processo</a>
+            </div>
+            
+            <div class="nav-cta">
+                <a href="https://wa.me/5500000000000" class="btn btn-outline pulse-accent" style="border-color: var(--color-accent); color: var(--color-accent);">Orçamento Rápido</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Mobile Drawer -->
-    <div id="drawer-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[1050] hidden transition-opacity duration-300 opacity-0"></div>
-    <div id="mobile-drawer" class="fixed top-0 right-[-100%] w-[80%] max-w-[300px] h-full bg-background z-[1100] p-8 transition-all duration-300 border-l border-white/10 flex flex-col">
-        <div class="flex justify-between items-center mb-10">
-            <img alt="Logo" src="assets/logo.svg" class="w-8 h-8 object-contain">
-            <button id="drawer-close" class="text-on-surface">
-                <span class="material-symbols-outlined text-3xl">close</span>
-            </button>
-        </div>
-        <div class="flex flex-col gap-6 font-headline-md text-headline-md text-on-surface-variant">
-            <a class="hover:text-primary transition-colors" href="#inicio">Início</a>
-            <a class="hover:text-primary transition-colors" href="#catalogo">Catálogo</a>
-            <a class="hover:text-primary transition-colors" href="#processo">Processo</a>
-            <a class="hover:text-primary transition-colors" href="#contato">Contato</a>
-        </div>
-        <div class="mt-auto pt-8">
-            <a class="flex items-center justify-center px-6 py-3 rounded-lg border border-primary bg-primary/10 text-primary font-body-md text-body-md pulse-amber" href="https://wa.me/5500000000000">
-                Solicitar Orçamento
-            </a>
-        </div>
-    </div>
-
     <!-- HERO -->
-    <section class="relative min-h-screen flex items-center justify-center px-margin-mobile md:px-margin-desktop pt-24 pb-16 overflow-hidden" id="inicio">
-        <!-- Abstract Background Glows -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-container/10 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-tertiary-container/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <header class="hero" id="inicio">
+        <div class="hero-glow"></div>
+        <div class="hero-grid"></div>
         
-        <div class="max-w-container-max mx-auto z-10 w-full flex flex-col items-center text-center reveal">
-            <span class="font-mono-data text-mono-data text-primary-container tracking-widest uppercase mb-6 block">
-                TECNOLOGIA EM MANUFATURA ADITIVA
-            </span>
-            <h1 class="font-headline-xl text-headline-xl md:text-[64px] md:leading-[72px] text-on-surface font-bold mb-8 max-w-4xl hero-title" id="hero-headline">
-                Transformamos Ideias em <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-surface-tint">Realidade Tridimensional</span>
+        <div class="container hero-content">
+            <span class="overline animate-fade-up">Tecnologia em Manufatura Aditiva</span>
+            <h1 class="hero-title font-display animate-fade-up delay-100">
+                Transformamos Ideias em <br> <span class="highlight">Realidade Tridimensional</span>
             </h1>
+            <p class="hero-desc animate-fade-up delay-200">
+                Do protótipo funcional ao produto final. Especialistas em impressão PLA e PETG com qualidade industrial e precisão micrométrica.
+            </p>
             
-            <div class="flex flex-col sm:flex-row gap-6 mb-16">
-                <a class="px-8 py-4 rounded-lg bg-white/5 backdrop-blur-md border border-primary text-primary font-body-md text-body-md hover:bg-primary/10 transition-all amber-glow flex items-center justify-center gap-2" href="#catalogo">
-                    <span class="material-symbols-outlined">view_module</span>
-                    Ver Catálogo
+            <div class="hero-actions animate-fade-up delay-300">
+                <a href="#catalogo" class="btn btn-primary shimmer-btn">
+                    Explorar Catálogo
                 </a>
-                <a class="px-8 py-4 rounded-lg text-on-surface font-body-md text-body-md hover:text-primary transition-colors flex items-center justify-center gap-2 group" href="#processo">
-                    Saiba Mais
-                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                <a href="#processo" class="btn btn-ghost shimmer-btn">
+                    Conheça o Processo
                 </a>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-3xl">
-                <div class="glass-panel rounded-xl p-4 flex items-center gap-4 reveal">
-                    <span class="material-symbols-outlined text-primary-container text-3xl">precision_manufacturing</span>
-                    <span class="font-body-sm text-body-sm text-on-surface font-medium">Precisão Micron</span>
-                </div>
-                <div class="glass-panel rounded-xl p-4 flex items-center gap-4 reveal" style="transition-delay: 100ms;">
-                    <span class="material-symbols-outlined text-primary-container text-3xl">layers</span>
-                    <span class="font-body-sm text-body-sm text-on-surface font-medium">Materiais Premium</span>
-                </div>
-                <div class="glass-panel rounded-xl p-4 flex items-center gap-4 reveal" style="transition-delay: 200ms;">
-                    <span class="material-symbols-outlined text-primary-container text-3xl">local_shipping</span>
-                    <span class="font-body-sm text-body-sm text-on-surface font-medium">Entrega Rápida</span>
-                </div>
+            <div class="animate-fade-up delay-400 animate-bounce" style="margin-top: 60px; color: var(--color-text-muted);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
             </div>
         </div>
-        
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 bounce-infinite text-primary pointer-events-none">
-            <span class="material-symbols-outlined text-3xl">keyboard_double_arrow_down</span>
+    </header>
+
+    <!-- PROCESSO & DIFERENCIAIS -->
+    <section class="section" id="processo">
+        <div class="container">
+            <div class="io-reveal">
+                <span class="overline">Por que Layer3D?</span>
+                <h2 class="section-title">Inovação em cada camada.</h2>
+                <p class="section-desc">Nosso compromisso é entregar peças de alta durabilidade com um acabamento impecável, utilizando tecnologia de ponta.</p>
+            </div>
+            
+            <div class="process-grid">
+                <div class="glass-panel feature-card io-reveal">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    </div>
+                    <h3 class="feature-title font-display">Precisão Micron</h3>
+                    <p class="feature-desc">Calibração diária dos eixos para garantir tolerâncias mínimas e encaixes perfeitos em peças técnicas.</p>
+                </div>
+                
+                <div class="glass-panel feature-card io-reveal delay-100">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <h3 class="feature-title font-display">Materiais Premium</h3>
+                    <p class="feature-desc">Utilizamos exclusivamente filamentos de alta performance de fornecedores certificados e sustentáveis.</p>
+                </div>
+                
+                <div class="glass-panel feature-card io-reveal delay-200">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                    </div>
+                    <h3 class="feature-title font-display">Logística Otimizada</h3>
+                    <p class="feature-desc">Embalagens sob medida e envio rápido para todo o Brasil. Segurança total para o seu projeto.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- CATALOG -->
-    <section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low relative" id="catalogo">
-        <div class="max-w-container-max mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 reveal">
+    <!-- CATALOGO -->
+    <section class="section" id="catalogo" style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <div class="catalog-header io-reveal">
                 <div>
-                    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold mb-4">Nosso Catálogo</h2>
-                    <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Peças exclusivas criadas com a mais alta precisão da tecnologia 3D.</p>
+                    <h2 class="section-title" style="margin-bottom: 8px;">Nosso Catálogo</h2>
+                    <p class="section-desc">Explore nossa biblioteca digital de modelos testados e otimizados.</p>
                 </div>
-                <!-- Filters -->
-                <div id="catalog-filters" class="flex flex-wrap gap-3">
-                    <!-- Gerado pelo JS -->
+                <div id="catalog-filters" class="catalog-filters">
+                    <!-- Filters injected via JS -->
                 </div>
             </div>
             
-            <!-- Grid -->
-            <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-                <!-- Gerado pelo JS -->
-            </div>
-            
-            <div class="mt-12 text-center reveal">
-                <button class="px-8 py-3 rounded-lg glass-panel text-on-surface font-body-md text-body-md hover:text-primary transition-colors shimmer-btn relative overflow-hidden">Carregar Mais Produtos</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROCESS / ADVANTAGES (Replicating Stitch fidelity) -->
-    <section class="py-24 px-margin-mobile md:px-margin-desktop bg-background relative" id="processo">
-        <div class="max-w-container-max mx-auto">
-            <div class="text-center mb-16 reveal">
-                <span class="font-mono-data text-mono-data text-primary-container tracking-widest uppercase mb-4 block">POR QUE A LAYER3D LABS?</span>
-                <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">Inovação em cada camada</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="glass-panel p-8 rounded-xl reveal flex gap-6 items-start">
-                    <span class="material-symbols-outlined text-primary-container text-4xl mt-1">verified</span>
-                    <div>
-                        <h3 class="font-headline-md text-headline-md text-on-surface font-bold mb-2">Qualidade Garantida</h3>
-                        <p class="font-body-md text-body-md text-on-surface-variant">Inspeção rigorosa em cada peça produzida para garantir que atenda aos seus padrões mais elevados.</p>
-                    </div>
-                </div>
-                <div class="glass-panel p-8 rounded-xl reveal flex gap-6 items-start" style="transition-delay: 100ms;">
-                    <span class="material-symbols-outlined text-primary-container text-4xl mt-1">deployed_code</span>
-                    <div>
-                        <h3 class="font-headline-md text-headline-md text-on-surface font-bold mb-2">Materiais Premium</h3>
-                        <p class="font-body-md text-body-md text-on-surface-variant">Utilizamos apenas filamentos de alta performance (PLA, PETG) de fornecedores certificados e sustentáveis.</p>
-                    </div>
-                </div>
+            <div id="catalog-grid" class="catalog-grid">
+                <!-- Products injected via JS -->
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-surface-container-lowest w-full pt-16 pb-8 px-margin-mobile md:px-margin-desktop border-t border-white/5" id="contato">
-        <div class="max-w-container-max mx-auto flex flex-col items-center gap-8 w-full">
-            <div class="flex flex-col items-center gap-4">
-                <div class="flex items-center gap-3">
-                    <img alt="Layer3D Labs Logo" class="w-10 h-10 object-contain opacity-80 transition-all" src="assets/logo.svg" />
-                    <span class="font-headline-md text-headline-md text-primary font-bold">Layer3D Labs</span>
-                </div>
-                <div class="flex gap-6 mt-4">
-                    <a aria-label="Instagram" class="text-on-surface-variant hover:text-primary transition-colors" href="https://instagram.com/layer3dlabs">
-                        <span class="material-symbols-outlined" style="font-size: 28px;">photo_camera</span>
-                    </a>
-                </div>
+    <footer class="footer" id="contato">
+        <div class="container footer-content io-reveal">
+            <div class="nav-brand" style="justify-content: center; filter: grayscale(1); opacity: 0.7;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" style="width: 32px; height: 32px;">
+                  <path d="M50 40 L150 40 L160 60 L40 60 Z" fill="#fff" />
+                  <path d="M40 70 L160 70 L170 90 L30 90 Z" fill="#fff" fill-opacity="0.8" />
+                  <path d="M30 100 L170 100 L180 120 L20 120 Z" fill="#fff" fill-opacity="0.6" />
+                </svg>
+                <span class="font-display">Layer3D Labs</span>
             </div>
             
-            <div class="flex gap-6 font-body-sm text-body-sm text-on-surface-variant">
-                <a class="hover:text-primary transition-colors" href="#">Privacidade</a>
-                <a class="hover:text-primary transition-colors" href="#">Termos</a>
-                <a class="hover:text-primary transition-colors" href="#">Suporte</a>
+            <div class="footer-links">
+                <a href="https://instagram.com/layer3dlabs" target="_blank" style="display: flex; align-items: center; gap: 8px; color: var(--color-text-primary);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    @layer3dlabs
+                </a>
             </div>
             
-            <p class="font-body-sm text-body-sm text-on-surface-variant/50 text-center mt-8">
-                © 2026 Layer3D Labs. Todos os direitos reservados.
-            </p>
+            <p class="footer-copy">© 2026 Layer3D Labs. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <!-- JS Modules -->
+    <!-- Scripts -->
     <script src="js/main.js"></script>
-    <script src="js/animations.js"></script>
     <script src="js/catalog.js"></script>
 </body>
 </html>

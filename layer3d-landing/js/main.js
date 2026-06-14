@@ -1,75 +1,44 @@
-// Intersection Observer for reveal animations
-function initReveal() {
-    const reveals = document.querySelectorAll('.reveal');
-    
-    const observer = new IntersectionObserver((entries) => {
+/* js/main.js */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Intersection Observer for Scroll Reveals
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                // Unobserve after animation to save resources
-                observer.unobserve(entry.target);
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); 
             }
         });
-    }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+    }, observerOptions);
+
+    // Initial query for elements
+    document.querySelectorAll('.io-reveal').forEach(el => {
+        revealObserver.observe(el);
     });
     
-    reveals.forEach(reveal => {
-        // If already visible (e.g. at top of page), trigger immediately
-        const rect = reveal.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            reveal.classList.add('active');
-        } else {
-            observer.observe(reveal);
-        }
-    });
-}
+    // Expose globally so catalog.js can use it
+    window.observeNewElements = () => {
+        document.querySelectorAll('.io-reveal:not(.is-visible)').forEach(el => {
+            revealObserver.observe(el);
+        });
+    };
 
-// Navbar scroll effect
-function initNavbarScroll() {
+    // 2. Navbar Scroll Effect
     const navbar = document.querySelector('.navbar');
-    if (!navbar) return;
-    
-    const handleScroll = () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Check on load
-}
-
-// Mobile Menu Logic
-function initMobileMenu() {
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const drawer = document.querySelector('.mobile-drawer');
-    const overlay = document.querySelector('.drawer-overlay');
-    const closeBtn = document.querySelector('.drawer-close');
-    
-    if (!menuBtn || !drawer || !overlay) return;
-    
-    const toggleMenu = (isOpen) => {
-        drawer.classList.toggle('open', isOpen);
-        overlay.classList.toggle('active', isOpen);
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-    };
-    
-    menuBtn.addEventListener('click', () => toggleMenu(true));
-    if (closeBtn) closeBtn.addEventListener('click', () => toggleMenu(false));
-    overlay.addEventListener('click', () => toggleMenu(false));
-    
-    // Close on link click
-    drawer.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => toggleMenu(false));
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    initReveal();
-    initNavbarScroll();
-    initMobileMenu();
+    if (navbar) {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // Trigger on load
+    }
 });

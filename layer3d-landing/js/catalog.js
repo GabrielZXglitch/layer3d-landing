@@ -1,93 +1,87 @@
-const catalogData = {
+/* js/catalog.js */
+const db = {
     'Santos Religiosos': [
-        { name: 'São Francisco de Assis', desc: 'Resina de alta resolução com acabamento detalhado.' },
+        { name: 'São Francisco de Assis', desc: 'Resina de alta resolução com acabamento premium.' },
         { name: 'Nossa Senhora de Fátima', desc: 'Manto texturizado impresso em SLA.' },
         { name: 'Santo Antônio', desc: 'Modelo premium com base integrada.' },
-        { name: 'São Jorge', desc: 'Escultura detalhada com acabamento premium.' }
+        { name: 'São Jorge', desc: 'Escultura detalhada com pintura automotiva.' }
     ],
     'Decoração': [
-        { name: 'Vasos Geométricos', desc: 'Design moderno para ambientes contemporâneos.' },
-        { name: 'Porta-Retratos Modernos', desc: 'Molduras exclusivas impressas em 3D.' },
+        { name: 'Vasos Geométricos', desc: 'Design paramétrico para ambientes contemporâneos.' },
+        { name: 'Porta-Retratos Modernos', desc: 'Molduras exclusivas impressas em PETG.' },
         { name: 'Luminária de Mesa', desc: 'Efeito de luz difusa através de camadas de PLA.' },
         { name: 'Enfeites de Parede', desc: 'Arte abstrata modular para sua casa.' }
     ],
     'Utilidades': [
-        { name: 'Porta-Canetas Organizador', desc: 'Mantenha sua mesa em ordem com estilo.' },
+        { name: 'Porta-Canetas Organizador', desc: 'Mantenha sua mesa em ordem com estilo mecânico.' },
         { name: 'Suporte para Celular', desc: 'Ergonômico e resistente para todos os modelos.' },
-        { name: 'Divisórias Modulares', desc: 'Organização personalizada para gavetas.' },
-        { name: 'Ganchos Multiuso', desc: 'Praticidade e resistência para o dia a dia.' }
+        { name: 'Divisórias Modulares', desc: 'Organização personalizada para gavetas industriais.' },
+        { name: 'Ganchos Multiuso', desc: 'Praticidade e extrema resistência para o dia a dia.' }
     ],
     'Miniaturas': [
         { name: 'Carros em Escala', desc: 'Colecionáveis com alto nível de fidelidade.' },
         { name: 'Arquitetura em Miniatura', desc: 'Maquetes precisas de monumentos famosos.' },
-        { name: 'Personagens Geek', desc: 'Seus heróis e vilões favoritos em 3D.' },
-        { name: 'Peças de Xadrez', desc: 'Sets temáticos exclusivos e personalizados.' }
+        { name: 'Personagens Geek', desc: 'Seus heróis favoritos modelados em 3D.' },
+        { name: 'Peças de Xadrez', desc: 'Sets temáticos exclusivos e customizados.' }
     ],
     'Peças Técnicas': [
-        { name: 'Suportes e Brackets', desc: 'Peças funcionais em PETG para alta resistência.' },
-        { name: 'Engrenagens Customizadas', desc: 'Reposição técnica com medidas exatas.' },
+        { name: 'Suportes e Brackets', desc: 'Peças funcionais em ABS para alta resistência.' },
+        { name: 'Engrenagens Customizadas', desc: 'Reposição técnica com medidas cirúrgicas.' },
         { name: 'Protótipos Industriais', desc: 'Validação de design rápida e eficiente.' },
-        { name: 'Adaptadores', desc: 'Soluções sob medida para conexões técnicas.' }
+        { name: 'Adaptadores', desc: 'Soluções sob medida para conexões complexas.' }
     ]
 };
 
-function renderCatalog(category) {
-    const grid = document.getElementById('catalog-grid');
-    if (!grid) return;
-    
-    grid.innerHTML = '';
-    const products = catalogData[category] || [];
-    
-    products.forEach((product, index) => {
-        const card = document.createElement('div');
-        card.className = 'glass-panel product-card reveal flex flex-col group';
-        card.style.transitionDelay = `${index * 100}ms`;
-        
-        card.innerHTML = `
-            <div class="product-image">
-                <span class="material-symbols-outlined text-surface-variant text-6xl" style="font-size: 64px; color: var(--surface-variant);">image</span>
-                <div class="product-badge">${category.split(' ')[0]}</div>
-            </div>
-            <div class="product-content">
-                <div>
-                    <h3 class="font-space text-xl font-semibold mb-2" style="font-size: 24px; color: var(--on-surface); margin-bottom: 8px;">${product.name}</h3>
-                    <p class="font-inter text-sm" style="font-size: 14px; color: var(--on-surface-variant); margin-bottom: 24px;">${product.desc}</p>
-                </div>
-                <button class="w-full py-3 rounded-lg border border-white/10 text-on-surface font-body-sm text-body-sm hover:border-primary hover:text-primary transition-colors group-hover:bg-primary/5" style="padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); color: var(--on-surface); cursor: pointer; transition: all 0.3s ease;">Orçamento</button>
-            </div>
-        `;
-        grid.appendChild(card);
-    });
-
-    // Re-trigger reveal animation for new elements
-    setTimeout(() => {
-        const reveals = grid.querySelectorAll('.reveal');
-        reveals.forEach(r => r.classList.add('active'));
-    }, 100);
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const filterContainer = document.getElementById('catalog-filters');
-    if (!filterContainer) return;
-    
-    const categories = Object.keys(catalogData);
-    
+    const gridContainer = document.getElementById('catalog-grid');
+    if (!filterContainer || !gridContainer) return;
+
+    const categories = Object.keys(db);
+
+    function renderProducts(category) {
+        gridContainer.innerHTML = '';
+        const items = db[category] || [];
+
+        items.forEach((item, index) => {
+            const card = document.createElement('div');
+            // Adding io-reveal to hook into main.js observer
+            card.className = `glass-panel product-card io-reveal delay-${((index % 4) + 1) * 100}`;
+            
+            card.innerHTML = `
+                <div class="product-img-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                        <polyline points="21 15 16 10 5 21"></polyline>
+                    </svg>
+                </div>
+                <h4 class="product-title font-display">${item.name}</h4>
+                <p class="product-desc">${item.desc}</p>
+                <a href="https://wa.me/5500000000000" class="btn btn-ghost shimmer-btn" style="width:100%; padding: 10px;">Orçamento</a>
+            `;
+            gridContainer.appendChild(card);
+        });
+
+        if (window.observeNewElements) {
+            setTimeout(window.observeNewElements, 50);
+        }
+    }
+
+    // Build Filters
     categories.forEach((cat, index) => {
         const btn = document.createElement('button');
-        btn.className = `pill ${index === 0 ? 'pill-active' : 'pill-inactive'}`;
+        btn.className = `pill ${index === 0 ? 'active' : ''}`;
         btn.textContent = cat;
-        btn.onclick = () => {
-            document.querySelectorAll('.catalog-filters .pill').forEach(p => {
-                p.classList.remove('pill-active');
-                p.classList.add('pill-inactive');
-            });
-            btn.classList.remove('pill-inactive');
-            btn.classList.add('pill-active');
-            renderCatalog(cat);
-        };
+        
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.catalog-filters .pill').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            renderProducts(cat);
+        });
+        
         filterContainer.appendChild(btn);
     });
-    
-    // Initial render
-    renderCatalog(categories[0]);
+
+    renderProducts(categories[0]);
 });

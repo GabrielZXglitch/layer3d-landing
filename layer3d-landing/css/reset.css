@@ -1,3 +1,4 @@
+/* css/reset.css */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -6,30 +7,30 @@
 
 html {
     scroll-behavior: smooth;
+    text-size-adjust: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 body {
+    min-height: 100vh;
     line-height: 1.5;
-    overflow-x: hidden;
 }
 
-img, picture, video, canvas, svg {
+img, picture, svg {
     display: block;
     max-width: 100%;
 }
 
 input, button, textarea, select {
     font: inherit;
+    color: inherit;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
-    overflow-wrap: break-word;
-}
-
-ul, ol {
-    list-style: none;
+button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 a {
@@ -37,9 +38,6 @@ a {
     color: inherit;
 }
 
-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none;
+ul, ol {
+    list-style: none;
 }

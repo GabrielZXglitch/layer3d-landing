@@ -1,69 +1,111 @@
+/* css/components.css */
+
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* Glass Surfaces */
 .glass-panel {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-xl);
-    transition: all 0.3s ease;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s var(--ease-out);
 }
 
 .glass-panel:hover {
-    border-color: var(--primary-container);
-    box-shadow: 0 0 20px rgba(243, 156, 45, 0.2);
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-highlight);
+    box-shadow: 0 8px 32px var(--color-accent-glow);
     transform: translateY(-4px);
 }
 
+/* Buttons */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 24px;
-    border-radius: var(--radius-lg);
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: var(--radius-md);
     font-weight: 500;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s var(--ease-out);
 }
 
 .btn-primary {
-    background-color: var(--primary-container);
-    color: var(--on-primary);
+    background-color: var(--color-accent);
+    color: var(--color-bg-base);
+    font-weight: 600;
 }
 
 .btn-primary:hover {
-    background-color: var(--primary);
-    box-shadow: 0 0 15px rgba(243, 156, 45, 0.5);
+    background-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px var(--color-accent-glow);
 }
 
-.btn-outline {
-    border: 1px solid var(--primary-container);
-    color: var(--primary-container);
+.btn-ghost {
+    background-color: transparent;
+    border: 1px solid var(--glass-border);
+    color: var(--color-text-primary);
 }
 
-.btn-outline:hover {
-    background-color: rgba(243, 156, 45, 0.1);
+.btn-ghost:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background-color: var(--glass-bg);
 }
 
+/* Pills / Tags */
 .pill {
-    padding: 8px 16px;
-    border-radius: 9999px;
-    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
     font-weight: 500;
-    transition: all 0.3s ease;
     cursor: pointer;
+    transition: all 0.2s var(--ease-out);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    color: var(--color-text-secondary);
 }
 
-.pill-active {
-    background-color: var(--primary-container);
-    color: var(--on-primary);
+.pill:hover {
+    border-color: var(--color-text-primary);
+    color: var(--color-text-primary);
 }
 
-.pill-inactive {
-    background-color: rgba(255, 255, 255, 0.05);
-    color: var(--on-surface);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.pill.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg-base);
 }
 
-.pill-inactive:hover {
-    color: var(--primary-container);
-    border-color: var(--primary-container);
+/* Section Headings */
+.overline {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: var(--spacing-md);
+}
+
+.section-desc {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
 }
