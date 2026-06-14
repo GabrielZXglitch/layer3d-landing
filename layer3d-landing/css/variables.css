@@ -1,0 +1,48 @@
+/* css/variables.css */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+
+:root {
+    /* Colors */
+    --bg-primary: #0E0E10;
+    --bg-surface: #1A1A1C;
+    --bg-elevated: #242426;
+    --accent: #F39C2D;
+    --accent-light: #FFC766;
+    --accent-glow: rgba(243, 156, 45, 0.15);
+    --text-primary: #F0F0F0;
+    --text-secondary: #A0A0A0;
+    --text-muted: #606060;
+    
+    /* Borders & Glass */
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-glass: rgba(255, 255, 255, 0.10);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-blur: blur(12px);
+    
+    /* Radius */
+    --radius-card: 16px;
+    --radius-btn: 10px;
+    --radius-pill: 50px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Layout */
+    --max-width: 1200px;
+    --gutter: 24px;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, .font-space {
+    font-family: 'Space+Grotesk', sans-serif;
+}
+
+.font-mono {
+    font-family: 'JetBrains+Mono', monospace;
+}

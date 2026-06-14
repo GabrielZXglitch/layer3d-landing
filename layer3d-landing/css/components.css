@@ -1,0 +1,116 @@
+/* css/components.css */
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+/* Glassmorphism Panel */
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-glass);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-radius: var(--radius-card);
+    transition: var(--transition-base);
+}
+
+.glass-card:hover {
+    border-color: rgba(243, 156, 45, 0.4);
+    box-shadow: 0 8px 32px rgba(243, 156, 45, 0.1);
+    transform: translateY(-4px);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: var(--radius-btn);
+    font-weight: 600;
+    transition: var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--bg-primary);
+}
+
+.btn-primary:hover {
+    background: var(--accent-light);
+    transform: scale(1.02);
+}
+
+.btn-glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--accent);
+    color: var(--text-primary);
+    backdrop-filter: var(--glass-blur);
+}
+
+.btn-glass:hover {
+    background: rgba(243, 156, 45, 0.1);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.btn-outline {
+    border: 1px solid var(--text-primary);
+    color: var(--text-primary);
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent);
+}
+
+/* CTA Shimmer Effect */
+.shimmer-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transform: translateX(-100%);
+}
+
+.shimmer-btn:hover::after {
+    animation: shimmer 0.8s ease;
+}
+
+/* Pills / Badges */
+.pill {
+    padding: 6px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.pill-active {
+    background: var(--accent);
+    color: var(--bg-primary);
+}
+
+.pill-glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-glass);
+}
+
+/* Typography Helpers */
+.text-accent { color: var(--accent); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.uppercase { text-transform: uppercase; }
+.letter-spacing-lg { letter-spacing: 3px; }
+.bold { font-weight: 700; }
