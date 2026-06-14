@@ -6,25 +6,41 @@ function initReveal() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
+                // Unobserve after animation to save resources
+                observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
     });
     
-    reveals.forEach(reveal => observer.observe(reveal));
+    reveals.forEach(reveal => {
+        // If already visible (e.g. at top of page), trigger immediately
+        const rect = reveal.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            reveal.classList.add('active');
+        } else {
+            observer.observe(reveal);
+        }
+    });
 }
 
 // Navbar scroll effect
 function initNavbarScroll() {
     const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
+    if (!navbar) return;
+    
+    const handleScroll = () => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-    });
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Check on load
 }
 
 // Mobile Menu Logic
@@ -43,7 +59,7 @@ function initMobileMenu() {
     };
     
     menuBtn.addEventListener('click', () => toggleMenu(true));
-    closeBtn.addEventListener('click', () => toggleMenu(false));
+    if (closeBtn) closeBtn.addEventListener('click', () => toggleMenu(false));
     overlay.addEventListener('click', () => toggleMenu(false));
     
     // Close on link click

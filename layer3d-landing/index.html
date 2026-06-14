@@ -5,6 +5,10 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Layer3D Labs — Additive Manufacturing Excellence</title>
     
+    <!-- Preload Critical Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -15,15 +19,32 @@
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/sections.css">
+    
+    <style>
+        /* Essential Inline Fixes */
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary-container), var(--surface-tint));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        @media (max-width: 767px) {
+            .hide-mobile { display: none !important; }
+        }
+        
+        @media (min-width: 768px) {
+            .show-mobile-only { display: none !important; }
+        }
+    </style>
 </head>
 <body class="antialiased overflow-x-hidden">
 
     <!-- TopNavBar -->
     <nav class="navbar">
         <div class="navbar-content">
-            <div class="footer-logo">
-                <img alt="Layer3D Labs" src="assets/logo.svg" style="width: 48px; height: 48px;">
-                <span class="font-space" style="font-size: 24px; font-weight: 700; color: var(--on-surface);">Layer3D Labs</span>
+            <div class="logo" style="display: flex; align-items: center; gap: 12px;">
+                <img alt="Layer3D Labs" src="assets/logo.svg" style="width: 42px; height: 42px;">
+                <span class="font-space" style="font-size: 22px; font-weight: 700; color: var(--on-surface);">Layer3D Labs</span>
             </div>
             
             <div class="nav-links">
@@ -34,10 +55,10 @@
             </div>
             
             <div style="display: flex; gap: 16px; align-items: center;">
-                <a class="btn btn-outline pulse-amber" href="#contato" style="display: none; @media (min-width: 768px) { display: inline-flex; }">
+                <a class="btn btn-outline pulse-amber hide-mobile" href="#contato">
                     Solicitar Orçamento
                 </a>
-                <button class="mobile-menu-btn" style="color: var(--on-surface); font-size: 32px; display: block; @media (min-width: 768px) { display: none; }">
+                <button class="mobile-menu-btn show-mobile-only" style="color: var(--on-surface); font-size: 32px;">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
             </div>
@@ -49,16 +70,16 @@
     <div class="mobile-drawer">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
             <img alt="Logo" src="assets/logo.svg" style="width: 40px;">
-            <button class="drawer-close" style="color: var(--on-surface); font-size: 32px;">
-                <span class="material-symbols-outlined">close</span>
+            <button class="drawer-close" style="color: var(--on-surface);">
+                <span class="material-symbols-outlined" style="font-size: 32px;">close</span>
             </button>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 24px;">
+        <nav style="display: flex; flex-direction: column; gap: 24px;">
             <a class="nav-link" href="#inicio" style="font-size: 20px;">Início</a>
             <a class="nav-link" href="#catalogo" style="font-size: 20px;">Catálogo</a>
             <a class="nav-link" href="#processo" style="font-size: 20px;">Processo</a>
             <a class="nav-link" href="#contato" style="font-size: 20px;">Contato</a>
-        </div>
+        </nav>
         <div style="margin-top: 60px;">
             <a class="btn btn-primary pulse-amber" href="#contato" style="width: 100%;">Solicitar Orçamento</a>
         </div>
@@ -69,12 +90,12 @@
         <div class="hero-overlay-1"></div>
         <div class="hero-overlay-2"></div>
         
-        <div class="section-container reveal">
-            <span class="hero-eyebrow">TECNOLOGIA EM MANUFATURA ADITIVA</span>
+        <div class="section-container">
+            <span class="hero-eyebrow reveal">TECNOLOGIA EM MANUFATURA ADITIVA</span>
             <h1 class="hero-title font-space">
-                Transformamos Ideias em <span class="gradient-text">Realidade Tridimensional</span>
+                Transformamos Ideias em Realidade Tridimensional
             </h1>
-            <p class="hero-subtitle">
+            <p class="hero-subtitle reveal">
                 Do protótipo ao produto final. Impressões em PLA e PETG com qualidade industrial e precisão milimétrica.
             </p>
             
@@ -89,7 +110,7 @@
                 </a>
             </div>
 
-            <div class="hero-metrics" style="margin-top: 80px;">
+            <div class="hero-metrics reveal" style="margin-top: 80px;">
                 <div class="glass-panel metric-card">
                     <span class="material-symbols-outlined" style="color: var(--primary-container); font-size: 32px;">precision_manufacturing</span>
                     <div style="text-align: left;">
@@ -146,7 +167,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div style="text-align: center;">
-                <div class="footer-logo" style="justify-content: center; margin-bottom: 16px;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 16px;">
                     <img alt="Layer3D Labs" src="assets/logo.svg" style="width: 40px;">
                     <span class="font-space" style="font-size: 24px; font-weight: 700; color: var(--primary-container);">Layer3D Labs</span>
                 </div>
