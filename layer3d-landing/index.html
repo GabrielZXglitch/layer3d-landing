@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html class="dark scroll-smooth" lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Layer3D Labs — Additive Manufacturing Excellence</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     
     <!-- CSS Modules -->
     <link rel="stylesheet" href="css/reset.css">
@@ -12,190 +16,158 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/sections.css">
 </head>
-<body class="grid-bg">
+<body class="antialiased overflow-x-hidden">
 
-    <!-- NAVIGATION -->
+    <!-- TopNavBar -->
     <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                <span class="logo-dot"></span>
-                <span>LAYER3D<span style="color: var(--text-muted)">LABS</span></span>
-            </a>
-            
-            <div class="nav-links">
-                <a href="#materials" class="nav-link">MATERIAIS</a>
-                <a href="#catalog" class="nav-link">CATÁLOGO</a>
-                <a href="#about" class="nav-link">ADVANTAGES</a>
-                <a href="#contact" class="nav-link">CONTACT</a>
+        <div class="navbar-content">
+            <div class="footer-logo">
+                <img alt="Layer3D Labs" src="assets/logo.svg" style="width: 48px; height: 48px;">
+                <span class="font-space" style="font-size: 24px; font-weight: 700; color: var(--on-surface);">Layer3D Labs</span>
             </div>
             
-            <a href="https://wa.me/5500000000000" class="btn btn-ghost">REQUEST QUOTE</a>
+            <div class="nav-links">
+                <a class="nav-link active" href="#inicio">Início</a>
+                <a class="nav-link" href="#catalogo">Catálogo</a>
+                <a class="nav-link" href="#processo">Processo</a>
+                <a class="nav-link" href="#contato">Contato</a>
+            </div>
+            
+            <div style="display: flex; gap: 16px; align-items: center;">
+                <a class="btn btn-outline pulse-amber" href="#contato" style="display: none; @media (min-width: 768px) { display: inline-flex; }">
+                    Solicitar Orçamento
+                </a>
+                <button class="mobile-menu-btn" style="color: var(--on-surface); font-size: 32px; display: block; @media (min-width: 768px) { display: none; }">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header class="hero">
-        <div class="container">
-            <div class="hero-layout">
-                <div class="hero-content">
-                    <span class="overline reveal-text">High-Precision 3D Fabrication</span>
-                    <h1 class="display-title hero-title reveal-text" style="animation-delay: 0.2s">Transforming Bits into Atomic Reality</h1>
-                    <p class="body-lead hero-subtitle reveal-text" style="animation-delay: 0.4s">Professional-grade additive manufacturing. From functional prototypes in PETG to detailed aesthetic models in PLA. Engineered for precision.</p>
-                    
-                    <div class="hero-actions reveal-text" style="animation-delay: 0.6s">
-                        <a href="#catalog" class="btn btn-primary">EXPLORE CATALOG</a>
-                        <a href="https://wa.me/5500000000000" class="btn btn-ghost">WHATSAPP DIRECT</a>
-                    </div>
+    <!-- Mobile Drawer -->
+    <div class="drawer-overlay"></div>
+    <div class="mobile-drawer">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+            <img alt="Logo" src="assets/logo.svg" style="width: 40px;">
+            <button class="drawer-close" style="color: var(--on-surface); font-size: 32px;">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+            <a class="nav-link" href="#inicio" style="font-size: 20px;">Início</a>
+            <a class="nav-link" href="#catalogo" style="font-size: 20px;">Catálogo</a>
+            <a class="nav-link" href="#processo" style="font-size: 20px;">Processo</a>
+            <a class="nav-link" href="#contato" style="font-size: 20px;">Contato</a>
+        </div>
+        <div style="margin-top: 60px;">
+            <a class="btn btn-primary pulse-amber" href="#contato" style="width: 100%;">Solicitar Orçamento</a>
+        </div>
+    </div>
 
-                    <div class="hero-metrics">
-                        <div class="metric-item">
-                            <span class="value" data-target="100" data-suffix="+">0</span>
-                            <span class="label">Proprietary Models</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="value" data-target="24" data-suffix="h">0</span>
-                            <span class="label">Quotation Turnaround</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="value" data-target="0.1" data-suffix="mm">0</span>
-                            <span class="label">Layer Resolution</span>
-                        </div>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-overlay-1"></div>
+        <div class="hero-overlay-2"></div>
+        
+        <div class="section-container reveal">
+            <span class="hero-eyebrow">TECNOLOGIA EM MANUFATURA ADITIVA</span>
+            <h1 class="hero-title font-space">
+                Transformamos Ideias em <span class="gradient-text">Realidade Tridimensional</span>
+            </h1>
+            <p class="hero-subtitle">
+                Do protótipo ao produto final. Impressões em PLA e PETG com qualidade industrial e precisão milimétrica.
+            </p>
+            
+            <div class="hero-btns" style="justify-content: center; margin-top: 48px;">
+                <a class="btn btn-primary shimmer-container" href="#catalogo" style="padding: 16px 32px; gap: 8px;">
+                    <span class="material-symbols-outlined">view_module</span>
+                    Ver Catálogo
+                </a>
+                <a class="btn btn-outline" href="#processo" style="padding: 16px 32px; gap: 8px;">
+                    Saiba Mais
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+
+            <div class="hero-metrics" style="margin-top: 80px;">
+                <div class="glass-panel metric-card">
+                    <span class="material-symbols-outlined" style="color: var(--primary-container); font-size: 32px;">precision_manufacturing</span>
+                    <div style="text-align: left;">
+                        <div style="font-weight: 700; font-size: 18px;">Precisão Micron</div>
+                        <div style="font-size: 12px; color: var(--on-surface-variant);">Tolerâncias mínimas</div>
                     </div>
                 </div>
-                
-                <div class="hero-visual">
-                    <div class="blueprint-grid"></div>
+                <div class="glass-panel metric-card">
+                    <span class="material-symbols-outlined" style="color: var(--primary-container); font-size: 32px;">layers</span>
+                    <div style="text-align: left;">
+                        <div style="font-weight: 700; font-size: 18px;">Materiais Premium</div>
+                        <div style="font-size: 12px; color: var(--on-surface-variant);">PLA & PETG Pro</div>
+                    </div>
+                </div>
+                <div class="glass-panel metric-card">
+                    <span class="material-symbols-outlined" style="color: var(--primary-container); font-size: 32px;">local_shipping</span>
+                    <div style="text-align: left;">
+                        <div style="font-weight: 700; font-size: 18px;">Entrega Rápida</div>
+                        <div style="font-size: 12px; color: var(--on-surface-variant);">Todo o Brasil</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
-
-    <!-- MATERIALS SECTION -->
-    <section id="materials" class="section">
-        <div class="container">
-            <div class="materials-layout">
-                <div class="material-card reveal-card">
-                    <span class="overline">Material Specification</span>
-                    <h3 class="section-title">PLA Polyacid</h3>
-                    <p class="text-secondary">Optimal for aesthetic fidelity and intricate geometric complexity. Sourced from sustainable biopolymers.</p>
-                    
-                    <div class="material-specs">
-                        <div class="spec-item"><span class="label">Surface Finish</span><span class="val">Ultra-Smooth</span></div>
-                        <div class="spec-item"><span class="label">Dimensional Accuracy</span><span class="val">± 0.05mm</span></div>
-                        <div class="spec-item"><span class="label">Best For</span><span class="val">Display & Design</span></div>
-                    </div>
-                    <span class="material-bg-text">PLA</span>
-                </div>
-
-                <div class="material-card reveal-card stagger-1">
-                    <span class="overline">Technical Grade</span>
-                    <h3 class="section-title">PETG Copolyester</h3>
-                    <p class="text-secondary">Engineering-grade durability with superior impact resistance and thermal stability.</p>
-                    
-                    <div class="material-specs">
-                        <div class="spec-item"><span class="label">Impact Resistance</span><span class="val">High</span></div>
-                        <div class="spec-item"><span class="label">Thermal Threshold</span><span class="val">80°C</span></div>
-                        <div class="spec-item"><span class="label">Best For</span><span class="val">Functional Parts</span></div>
-                    </div>
-                    <span class="material-bg-text">PETG</span>
-                </div>
-            </div>
+        
+        <div class="scroll-indicator bounce-infinite" style="margin-top: 64px; color: var(--primary-container);">
+            <span class="material-symbols-outlined" style="font-size: 40px;">keyboard_double_arrow_down</span>
         </div>
     </section>
 
-    <!-- CATALOG SECTION -->
-    <section id="catalog" class="section">
-        <div class="container">
-            <div class="catalog-header">
+    <!-- CATALOG -->
+    <section class="section" id="catalogo" style="background-color: var(--surface-container-low);">
+        <div class="section-container">
+            <div class="catalog-header reveal">
                 <div>
-                    <span class="overline">Inventory</span>
-                    <h2 class="section-title">Digital Library</h2>
+                    <h2 class="font-space" style="font-size: clamp(32px, 5vw, 48px); font-weight: 700; margin-bottom: 16px;">Nosso Catálogo</h2>
+                    <p style="color: var(--on-surface-variant); max-width: 600px;">Peças exclusivas criadas com a mais alta precisão da tecnologia 3D.</p>
                 </div>
-                <div id="catalog-filters" class="catalog-filters">
-                    <!-- Filters via JS -->
+                <div id="catalog-filters" class="catalog-filters" style="flex-wrap: wrap;">
+                    <!-- Filters generated by JS -->
                 </div>
             </div>
             
             <div id="catalog-grid" class="catalog-grid">
-                <!-- Items via JS -->
+                <!-- Cards generated by JS -->
             </div>
-        </div>
-    </section>
-
-    <!-- ADVANTAGES (DIFFERENTIALS) -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="accent-line"></div>
-            <h2 class="section-title">The Technical Edge</h2>
             
-            <div class="diff-list">
-                <div class="diff-item reveal-card">
-                    <span class="diff-num">01 /</span>
-                    <h4 class="diff-title">Material Integrity</h4>
-                    <p class="diff-desc">We utilize only high-fidelity filaments tested for cross-layer adhesion and structural strength.</p>
-                </div>
-                <div class="diff-item reveal-card stagger-1">
-                    <span class="diff-num">02 /</span>
-                    <h4 class="diff-title">Precision Calibration</h4>
-                    <p class="diff-desc">Our machines undergo daily Z-axis and extrusion calibration for sub-millimeter consistency.</p>
-                </div>
-                <div class="diff-item reveal-card stagger-2">
-                    <span class="diff-num">03 /</span>
-                    <h4 class="diff-title">Global Logistics</h4>
-                    <p class="diff-desc">Custom shock-resistant packaging ensures your prints arrive in pristine condition anywhere.</p>
-                </div>
-                <div class="diff-item reveal-card stagger-3">
-                    <span class="diff-num">04 /</span>
-                    <h4 class="diff-title">Expert Support</h4>
-                    <p class="diff-desc">Consultation on geometry optimization and material selection for every unique project.</p>
-                </div>
+            <div class="reveal" style="margin-top: 64px; text-align: center;">
+                <button class="btn btn-outline shimmer-container">Carregar Mais Produtos</button>
             </div>
         </div>
     </section>
 
-    <!-- CTA FOOTER -->
+    <!-- FOOTER -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-layout">
-                <div>
-                    <div class="logo" style="margin-bottom: var(--space-md)">
-                        <span class="logo-dot"></span>
-                        <span>LAYER3D<span style="color: var(--text-muted)">LABS</span></span>
-                    </div>
-                    <p class="text-secondary" style="max-width: 300px">Advanced Manufacturing Studio. São Paulo, Brazil. Worldwide Shipping.</p>
+        <div class="footer-content">
+            <div style="text-align: center;">
+                <div class="footer-logo" style="justify-content: center; margin-bottom: 16px;">
+                    <img alt="Layer3D Labs" src="assets/logo.svg" style="width: 40px;">
+                    <span class="font-space" style="font-size: 24px; font-weight: 700; color: var(--primary-container);">Layer3D Labs</span>
                 </div>
-                
-                <div class="footer-nav">
-                    <div class="footer-col">
-                        <h5>SYSTEM</h5>
-                        <ul>
-                            <li><a href="#">Status</a></li>
-                            <li><a href="#materials">Materials</a></li>
-                            <li><a href="#catalog">Inventory</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h5>CONTACT</h5>
-                        <ul>
-                            <li><a href="https://wa.me/5500000000000">WhatsApp</a></li>
-                            <li><a href="mailto:ops@layer3dlabs.com">Operations</a></li>
-                            <li><a href="#">Instagram</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h5>LEGAL</h5>
-                        <ul>
-                            <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Terms</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <p style="color: var(--on-surface-variant); max-width: 400px; margin: 0 auto;">Alta precisão em manufatura aditiva para transformar seus projetos em realidade.</p>
             </div>
             
-            <div class="spec-item" style="border-top: 1px solid var(--border-glass); border-bottom: none; padding-top: var(--space-md)">
-                <span class="label">© 2026 LAYER3D LABS</span>
-                <span class="val">EST. 2020</span>
+            <div class="footer-socials">
+                <a aria-label="Instagram" class="nav-link" href="https://instagram.com/layer3dlabs" style="font-size: 32px;">
+                    <span class="material-symbols-outlined">photo_camera</span>
+                </a>
             </div>
+            
+            <div class="footer-links">
+                <a class="nav-link" href="#">Privacidade</a>
+                <a class="nav-link" href="#">Termos</a>
+                <a class="nav-link" href="#">Suporte</a>
+            </div>
+            
+            <p class="footer-copyright">
+                © 2026 Layer3D Labs. Todos os direitos reservados.
+            </p>
         </div>
     </footer>
 

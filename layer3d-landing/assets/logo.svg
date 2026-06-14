@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <path d="M50 40 L150 40 L160 60 L40 60 Z" fill="#F39C2D" />
+  <path d="M40 70 L160 70 L170 90 L30 90 Z" fill="#F39C2D" fill-opacity="0.8" />
+  <path d="M30 100 L170 100 L180 120 L20 120 Z" fill="#F39C2D" fill-opacity="0.6" />
+  <text x="100" y="160" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="bold" font-size="22" fill="white">Layer3D</text>
+  <text x="100" y="185" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#F39C2D" letter-spacing="2">LABS</text>
+</svg>

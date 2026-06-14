@@ -1,130 +1,69 @@
-/* css/components.css */
-
-.container {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 var(--space-md);
-}
-
-/* --- Glass Surfaces --- */
 .glass-panel {
-    background: var(--glass-bg);
-    border: 1px solid var(--border-glass);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border-radius: var(--radius-md);
-    transition: var(--transition-base);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    transition: all 0.3s ease;
 }
 
 .glass-panel:hover {
-    background: var(--glass-bg-hover);
-    border-color: var(--border-accent);
+    border-color: var(--primary-container);
+    box-shadow: 0 0 20px rgba(243, 156, 45, 0.2);
+    transform: translateY(-4px);
 }
 
-/* Card Depth Effect */
-.card-technical {
-    position: relative;
-    padding: var(--space-md);
-    overflow: hidden;
-}
-
-.card-technical::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border-glass), transparent);
-}
-
-/* --- Interactive Elements --- */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 28px;
-    border-radius: var(--radius-sm);
-    font-size: 0.95rem;
+    padding: 12px 24px;
+    border-radius: var(--radius-lg);
     font-weight: 500;
-    letter-spacing: -0.01em;
-    transition: var(--transition-base);
+    transition: all 0.3s ease;
     cursor: pointer;
-    white-space: nowrap;
 }
 
 .btn-primary {
-    background: var(--accent);
-    color: var(--bg-void);
+    background-color: var(--primary-container);
+    color: var(--on-primary);
 }
 
 .btn-primary:hover {
-    background: var(--accent-light);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px -10px var(--accent);
+    background-color: var(--primary);
+    box-shadow: 0 0 15px rgba(243, 156, 45, 0.5);
 }
 
-.btn-ghost {
-    background: transparent;
-    border: 1px solid var(--border-glass);
-    color: var(--text-primary);
+.btn-outline {
+    border: 1px solid var(--primary-container);
+    color: var(--primary-container);
 }
 
-.btn-ghost:hover {
-    border-color: var(--accent);
-    background: var(--glass-bg);
+.btn-outline:hover {
+    background-color: rgba(243, 156, 45, 0.1);
 }
 
-/* --- Typography System --- */
-.overline {
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    margin-bottom: var(--space-sm);
+.pill {
+    padding: 8px 16px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.display-title {
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    font-weight: 700;
-    line-height: 0.95;
-    color: var(--text-primary);
+.pill-active {
+    background-color: var(--primary-container);
+    color: var(--on-primary);
 }
 
-.section-title {
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-    font-weight: 600;
-    line-height: 1.1;
-    margin-bottom: var(--space-md);
+.pill-inactive {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--on-surface);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.body-lead {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    max-width: 60ch;
-}
-
-/* --- Decorative Elements --- */
-.accent-line {
-    width: 40px;
-    height: 1px;
-    background: var(--accent);
-    display: block;
-    margin-bottom: var(--space-sm);
-}
-
-.grid-bg {
-    background-image: radial-gradient(var(--text-dim) 0.5px, transparent 0.5px);
-    background-size: 30px 30px;
-}
-
-/* Badge Refinement */
-.badge-pill {
-    padding: 4px 12px;
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-glass);
-    border-radius: var(--radius-full);
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    font-family: 'JetBrains Mono', monospace;
+.pill-inactive:hover {
+    color: var(--primary-container);
+    border-color: var(--primary-container);
 }

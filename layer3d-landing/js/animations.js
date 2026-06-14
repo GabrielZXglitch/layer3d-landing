@@ -1,52 +1,42 @@
-/* js/animations.js */
-
-function animateHeadline() {
+function animateHeroHeadline() {
     const title = document.querySelector('.hero-title');
     if (!title) return;
     
-    const text = title.textContent.trim();
+    // Check if it's already animated
+    if (title.getAttribute('data-animated')) return;
+    
+    const text = title.innerText;
     const words = text.split(' ');
     title.innerHTML = '';
-
+    
     words.forEach((word, index) => {
         const span = document.createElement('span');
-        span.textContent = word + ' ';
-        span.style.animation = `wordUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards`;
-        span.style.animationDelay = `${index * 80}ms`;
+        // Handle nested spans for gradient text if needed
+        if (word.includes('Realidade') || word.includes('Tridimensional')) {
+             span.innerHTML = `<span class="gradient-text">${word}</span> `;
+        } else {
+            span.textContent = word + ' ';
+        }
+        
+        span.style.display = 'inline-block';
+        span.style.opacity = '0';
+        span.style.transform = 'translateY(20px)';
+        span.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+        span.style.transitionDelay = `${index * 60}ms`;
+        
         title.appendChild(span);
+        
+        // Trigger animation
+        setTimeout(() => {
+            span.style.opacity = '1';
+            span.style.transform = 'translateY(0)';
+        }, 100);
     });
-}
-
-function animateCounters() {
-    const counters = document.querySelectorAll('.badge-value[data-target]');
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = +entry.target.getAttribute('data-target');
-                const duration = 2000; // 2 seconds
-                const step = target / (duration / 16);
-                let current = 0;
-
-                const timer = setInterval(() => {
-                    current += step;
-                    if (current >= target) {
-                        entry.target.textContent = target + (entry.target.getAttribute('data-suffix') || '');
-                        clearInterval(timer);
-                    } else {
-                        entry.target.textContent = Math.floor(current) + (entry.target.getAttribute('data-suffix') || '');
-                    }
-                }, 16);
-                
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    counters.forEach(counter => observer.observe(counter));
+    title.setAttribute('data-animated', 'true');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    animateHeadline();
-    animateCounters();
+    // Initial delay for smooth appearance
+    setTimeout(animateHeroHeadline, 300);
 });

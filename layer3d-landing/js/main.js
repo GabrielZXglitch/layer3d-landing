@@ -1,7 +1,6 @@
-/* js/main.js */
-
+// Intersection Observer for reveal animations
 function initReveal() {
-    const reveals = document.querySelectorAll('.reveal-card, .reveal-item');
+    const reveals = document.querySelectorAll('.reveal');
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -9,46 +8,52 @@ function initReveal() {
                 entry.target.classList.add('active');
             }
         });
-    }, { threshold: 0.15 });
-
+    }, {
+        threshold: 0.1
+    });
+    
     reveals.forEach(reveal => observer.observe(reveal));
 }
 
-function handleNavbarScroll() {
-    const nav = document.querySelector('.navbar');
+// Navbar scroll effect
+function initNavbarScroll() {
+    const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            nav.classList.add('scrolled');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
         } else {
-            nav.classList.remove('scrolled');
+            navbar.classList.remove('scrolled');
         }
     });
 }
 
-// Attach to window so catalog.js can call it after rendering items
-window.initReveal = initReveal;
+// Mobile Menu Logic
+function initMobileMenu() {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const drawer = document.querySelector('.mobile-drawer');
+    const overlay = document.querySelector('.drawer-overlay');
+    const closeBtn = document.querySelector('.drawer-close');
+    
+    if (!menuBtn || !drawer || !overlay) return;
+    
+    const toggleMenu = (isOpen) => {
+        drawer.classList.toggle('open', isOpen);
+        overlay.classList.toggle('active', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    };
+    
+    menuBtn.addEventListener('click', () => toggleMenu(true));
+    closeBtn.addEventListener('click', () => toggleMenu(false));
+    overlay.addEventListener('click', () => toggleMenu(false));
+    
+    // Close on link click
+    drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => toggleMenu(false));
+    });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     initReveal();
-    handleNavbarScroll();
-    
-    // Smooth scroll for nav links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#' || !targetId) return;
-            
-            const target = document.querySelector(targetId);
-            if (target) {
-                const navHeight = 80; // Estimated height
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+    initNavbarScroll();
+    initMobileMenu();
 });
