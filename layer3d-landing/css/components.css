@@ -3,114 +3,128 @@
 .container {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 var(--gutter);
+    padding: 0 var(--space-md);
 }
 
-/* Glassmorphism Panel */
-.glass-card {
+/* --- Glass Surfaces --- */
+.glass-panel {
     background: var(--glass-bg);
     border: 1px solid var(--border-glass);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
-    border-radius: var(--radius-card);
+    border-radius: var(--radius-md);
     transition: var(--transition-base);
 }
 
-.glass-card:hover {
-    border-color: rgba(243, 156, 45, 0.4);
-    box-shadow: 0 8px 32px rgba(243, 156, 45, 0.1);
-    transform: translateY(-4px);
+.glass-panel:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--border-accent);
 }
 
-/* Buttons */
+/* Card Depth Effect */
+.card-technical {
+    position: relative;
+    padding: var(--space-md);
+    overflow: hidden;
+}
+
+.card-technical::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-glass), transparent);
+}
+
+/* --- Interactive Elements --- */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 24px;
-    border-radius: var(--radius-btn);
-    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
     transition: var(--transition-base);
-    position: relative;
-    overflow: hidden;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
 .btn-primary {
     background: var(--accent);
-    color: var(--bg-primary);
+    color: var(--bg-void);
 }
 
 .btn-primary:hover {
     background: var(--accent-light);
-    transform: scale(1.02);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -10px var(--accent);
 }
 
-.btn-glass {
-    background: var(--glass-bg);
-    border: 1px solid var(--accent);
-    color: var(--text-primary);
-    backdrop-filter: var(--glass-blur);
-}
-
-.btn-glass:hover {
-    background: rgba(243, 156, 45, 0.1);
-    box-shadow: 0 0 15px var(--accent-glow);
-}
-
-.btn-outline {
-    border: 1px solid var(--text-primary);
-    color: var(--text-primary);
-}
-
-.btn-outline:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: var(--accent);
-}
-
-/* CTA Shimmer Effect */
-.shimmer-btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
-    transform: translateX(-100%);
-}
-
-.shimmer-btn:hover::after {
-    animation: shimmer 0.8s ease;
-}
-
-/* Pills / Badges */
-.pill {
-    padding: 6px 16px;
-    border-radius: var(--radius-pill);
-    font-size: 0.875rem;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-.pill-active {
-    background: var(--accent);
-    color: var(--bg-primary);
-}
-
-.pill-glass {
-    background: var(--glass-bg);
+.btn-ghost {
+    background: transparent;
     border: 1px solid var(--border-glass);
+    color: var(--text-primary);
 }
 
-/* Typography Helpers */
-.text-accent { color: var(--accent); }
-.text-secondary { color: var(--text-secondary); }
-.text-muted { color: var(--text-muted); }
-.uppercase { text-transform: uppercase; }
-.letter-spacing-lg { letter-spacing: 3px; }
-.bold { font-weight: 700; }
+.btn-ghost:hover {
+    border-color: var(--accent);
+    background: var(--glass-bg);
+}
+
+/* --- Typography System --- */
+.overline {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: var(--space-sm);
+}
+
+.display-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    line-height: 0.95;
+    color: var(--text-primary);
+}
+
+.section-title {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: var(--space-md);
+}
+
+.body-lead {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 60ch;
+}
+
+/* --- Decorative Elements --- */
+.accent-line {
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    display: block;
+    margin-bottom: var(--space-sm);
+}
+
+.grid-bg {
+    background-image: radial-gradient(var(--text-dim) 0.5px, transparent 0.5px);
+    background-size: 30px 30px;
+}
+
+/* Badge Refinement */
+.badge-pill {
+    padding: 4px 12px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-family: 'JetBrains Mono', monospace;
+}

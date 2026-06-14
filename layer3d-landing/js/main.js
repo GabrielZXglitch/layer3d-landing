@@ -1,7 +1,7 @@
 /* js/main.js */
 
 function initReveal() {
-    const reveals = document.querySelectorAll('.reveal');
+    const reveals = document.querySelectorAll('.reveal-card, .reveal-item');
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -9,7 +9,7 @@ function initReveal() {
                 entry.target.classList.add('active');
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
 
     reveals.forEach(reveal => observer.observe(reveal));
 }
@@ -17,7 +17,7 @@ function initReveal() {
 function handleNavbarScroll() {
     const nav = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 100) {
             nav.classList.add('scrolled');
         } else {
             nav.classList.remove('scrolled');
@@ -37,11 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            if (targetId === '#' || !targetId) return;
             
             const target = document.querySelector(targetId);
             if (target) {
-                const navHeight = document.querySelector('.navbar').offsetHeight;
+                const navHeight = 80; // Estimated height
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
                 
                 window.scrollTo({

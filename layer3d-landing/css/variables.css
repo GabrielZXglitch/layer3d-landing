@@ -1,48 +1,84 @@
 /* css/variables.css */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap');
 
 :root {
-    /* Colors */
+    /* Colors - Refined High-Tech Palette */
+    --bg-void: #050506;
     --bg-primary: #0E0E10;
-    --bg-surface: #1A1A1C;
-    --bg-elevated: #242426;
+    --bg-surface: #151518;
+    --bg-elevated: #1C1C20;
+    
     --accent: #F39C2D;
+    --accent-dim: #925E1B;
     --accent-light: #FFC766;
-    --accent-glow: rgba(243, 156, 45, 0.15);
-    --text-primary: #F0F0F0;
-    --text-secondary: #A0A0A0;
-    --text-muted: #606060;
+    --accent-glow: rgba(243, 156, 45, 0.12);
     
-    /* Borders & Glass */
-    --border-subtle: rgba(255, 255, 255, 0.06);
-    --border-glass: rgba(255, 255, 255, 0.10);
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-blur: blur(12px);
+    --text-primary: #F5F5F7;
+    --text-secondary: #8E8E93;
+    --text-muted: #48484A;
+    --text-dim: #2C2C2E;
     
-    /* Radius */
-    --radius-card: 16px;
-    --radius-btn: 10px;
-    --radius-pill: 50px;
+    /* Glass & Borders - Multi-layered */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-bg-hover: rgba(255, 255, 255, 0.05);
+    --border-glass: rgba(255, 255, 255, 0.08);
+    --border-accent: rgba(243, 156, 45, 0.2);
+    --glass-blur: blur(20px);
     
-    /* Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-base: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Radius - More geometric and intentional */
+    --radius-sm: 4px;
+    --radius-md: 12px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+    
+    /* Spacing System */
+    --space-unit: 8px;
+    --space-xs: 4px;
+    --space-sm: 12px;
+    --space-md: 24px;
+    --space-lg: 48px;
+    --space-xl: 96px;
+    --space-2xl: 160px;
+    
+    /* Animation Defaults */
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+    --transition-slow: 0.6s var(--ease-out-expo);
+    --transition-base: 0.3s var(--ease-out-expo);
     
     /* Layout */
-    --max-width: 1200px;
-    --gutter: 24px;
+    --max-width: 1400px;
 }
 
 body {
-    background-color: var(--bg-primary);
+    background-color: var(--bg-void);
     color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
 }
 
-h1, h2, h3, .font-space {
-    font-family: 'Space+Grotesk', sans-serif;
+h1, h2, h3, h4, .font-display {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.03em;
 }
 
 .font-mono {
-    font-family: 'JetBrains+Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    letter-spacing: 0;
+}
+
+/* Scrollbar Refinement */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-void);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--text-dim);
+    border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
 }

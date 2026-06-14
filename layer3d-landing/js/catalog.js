@@ -1,35 +1,29 @@
 /* js/catalog.js */
 
 const catalogData = {
-    'Santos Religiosos': [
-        { name: 'São Francisco de Assis', desc: 'Escultura detalhada com acabamento premium.' },
-        { name: 'Nossa Senhora de Fátima', desc: 'Representação sacra com alta precisão nos mantos.' },
-        { name: 'Santo Antônio', desc: 'Peça religiosa ideal para altares e decoração.' },
-        { name: 'São Jorge', desc: 'Dinâmica e detalhada, capturando a essência do santo.' }
+    'RELIGIOUS': [
+        { name: 'Francis of Assisi', desc: 'Detailed liturgical sculpture with premium texturing.' },
+        { name: 'Lady of Fatima', desc: 'Sacred representation with high mantle precision.' },
+        { name: 'St. Anthony', desc: 'Votive piece optimized for altar display.' },
+        { name: 'St. George', desc: 'Dynamic composition capturing anatomical detail.' }
     ],
-    'Decoração': [
-        { name: 'Vasos Geométricos', desc: 'Design moderno para ambientes contemporâneos.' },
-        { name: 'Porta-Retratos Modernos', desc: 'Molduras exclusivas impressas em 3D.' },
-        { name: 'Luminária de Mesa', desc: 'Efeito de luz difusa através de camadas de PLA.' },
-        { name: 'Enfeites de Parede', desc: 'Arte abstrata modular para sua casa.' }
+    'DECOR': [
+        { name: 'Geometric Vessels', desc: 'Parametric design for contemporary spaces.' },
+        { name: 'Architectural Frames', desc: 'Structural frames with unique 3D infill patterns.' },
+        { name: 'Table Luminaire', desc: 'Light diffusion through layered PLA geometry.' },
+        { name: 'Modular Wall Art', desc: 'Abstract generative art for home interiors.' }
     ],
-    'Utilidades': [
-        { name: 'Porta-Canetas Organizador', desc: 'Mantenha sua mesa em ordem com estilo.' },
-        { name: 'Suporte para Celular', desc: 'Ergonômico e resistente para todos os modelos.' },
-        { name: 'Divisórias Modulares', desc: 'Organização personalizada para gavetas.' },
-        { name: 'Ganchos Multiuso', desc: 'Praticidade e resistência para o dia a dia.' }
+    'UTILITIES': [
+        { name: 'Tech Organizer', desc: 'Minimalist desktop organization system.' },
+        { name: 'Ergonomic Stand', desc: 'Universal device support with reinforced joints.' },
+        { name: 'Modular Dividers', desc: 'Custom organization for industrial storage.' },
+        { name: 'Precision Hooks', desc: 'Mechanical-grade load-bearing accessories.' }
     ],
-    'Miniaturas': [
-        { name: 'Carros em Escala', desc: 'Colecionáveis com alto nível de fidelidade.' },
-        { name: 'Arquitetura em Miniatura', desc: 'Maquetes precisas de monumentos famosos.' },
-        { name: 'Personagens Geek', desc: 'Seus heróis e vilões favoritos em 3D.' },
-        { name: 'Peças de Xadrez', desc: 'Sets temáticos exclusivos e personalizados.' }
-    ],
-    'Peças Técnicas': [
-        { name: 'Suportes e Brackets', desc: 'Peças funcionais em PETG para alta resistência.' },
-        { name: 'Engrenagens Customizadas', desc: 'Reposição técnica com medidas exatas.' },
-        { name: 'Protótipos Industriais', desc: 'Validação de design rápida e eficiente.' },
-        { name: 'Adaptadores', desc: 'Soluções sob medida para conexões técnicas.' }
+    'TECHNICAL': [
+        { name: 'Functional Brackets', desc: 'High-strength PETG load-bearing supports.' },
+        { name: 'Custom Gearing', desc: 'Technical replacement parts with tight tolerances.' },
+        { name: 'Industrial Prototyping', desc: 'Design validation with rapid iteration.' },
+        { name: 'Interface Adapters', desc: 'Bespoke solutions for technical connections.' }
     ]
 };
 
@@ -39,17 +33,16 @@ function renderCatalog(category) {
 
     const products = catalogData[category] || [];
     
-    products.forEach(product => {
+    products.forEach((product, index) => {
         const card = document.createElement('div');
-        card.className = 'product-card glass-card reveal';
+        card.className = `product-card reveal-card stagger-${(index % 4) + 1}`;
         card.innerHTML = `
-            <div class="product-img-placeholder">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <div class="product-visual">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
             </div>
-            <div class="product-category text-accent uppercase bold">${category}</div>
-            <h4 class="product-name font-space">${product.name}</h4>
-            <p class="product-desc">${product.desc}</p>
-            <a href="https://wa.me/5500000000000" class="btn btn-glass" style="width: 100%">Solicitar Orçamento</a>
+            <h4 class="font-display" style="font-size: 1.1rem; margin-bottom: 8px;">${product.name}</h4>
+            <p class="text-secondary" style="font-size: 0.85rem; margin-bottom: 24px; min-height: 40px;">${product.desc}</p>
+            <a href="https://wa.me/5500000000000" class="btn btn-ghost" style="width: 100%; font-size: 0.75rem;">INQUIRE SPECS</a>
         `;
         grid.appendChild(card);
     });
@@ -64,15 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     categories.forEach((cat, index) => {
         const pill = document.createElement('button');
-        pill.className = `pill ${index === 0 ? 'pill-active' : 'pill-glass'}`;
+        pill.className = `filter-pill ${index === 0 ? 'active' : ''}`;
         pill.textContent = cat;
         pill.onclick = (e) => {
-            document.querySelectorAll('.catalog-filters .pill').forEach(p => {
-                p.classList.remove('pill-active');
-                p.classList.add('pill-glass');
-            });
-            pill.classList.remove('pill-glass');
-            pill.classList.add('pill-active');
+            document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
             renderCatalog(cat);
         };
         filterContainer.appendChild(pill);

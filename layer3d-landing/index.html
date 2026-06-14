@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layer3D Labs | Impressão 3D Profissional</title>
+    <title>Layer3D Labs — Additive Manufacturing Excellence</title>
     
     <!-- CSS Modules -->
     <link rel="stylesheet" href="css/reset.css">
@@ -12,237 +12,189 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/sections.css">
 </head>
-<body>
+<body class="grid-bg">
 
-    <!-- NAVBAR -->
-    <nav class="navbar animate-nav">
+    <!-- NAVIGATION -->
+    <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <span style="color: #fff">Layer3D</span><span style="color: var(--accent)">Labs</span>
+                <span class="logo-dot"></span>
+                <span>LAYER3D<span style="color: var(--text-muted)">LABS</span></span>
             </a>
             
             <div class="nav-links">
-                <a href="#">Início</a>
-                <a href="#catalog">Catálogo</a>
-                <a href="#materials">Materiais</a>
-                <a href="#about">Sobre</a>
-                <a href="#contact">Contato</a>
+                <a href="#materials" class="nav-link">MATERIAIS</a>
+                <a href="#catalog" class="nav-link">CATÁLOGO</a>
+                <a href="#about" class="nav-link">ADVANTAGES</a>
+                <a href="#contact" class="nav-link">CONTACT</a>
             </div>
             
-            <a href="https://wa.me/5500000000000" class="btn btn-glass pulse-amber">Solicitar Orçamento</a>
+            <a href="https://wa.me/5500000000000" class="btn btn-ghost">REQUEST QUOTE</a>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero">
+    <!-- HERO SECTION -->
+    <header class="hero">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-eyebrow text-accent uppercase letter-spacing-lg">IMPRESSÃO 3D PROFISSIONAL</div>
-                <h1 class="hero-title font-space bold">Transformamos ideias em objetos reais</h1>
-                <p class="hero-subtitle">Do protótipo ao produto final. Impressões em PLA e PETG com qualidade industrial e precisão milimétrica.</p>
-                
-                <div class="hero-btns">
-                    <a href="#catalog" class="btn btn-primary shimmer-btn">Ver Catálogo</a>
-                    <a href="https://wa.me/5500000000000" class="btn btn-outline">Falar no WhatsApp</a>
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <span class="overline reveal-text">High-Precision 3D Fabrication</span>
+                    <h1 class="display-title hero-title reveal-text" style="animation-delay: 0.2s">Transforming Bits into Atomic Reality</h1>
+                    <p class="body-lead hero-subtitle reveal-text" style="animation-delay: 0.4s">Professional-grade additive manufacturing. From functional prototypes in PETG to detailed aesthetic models in PLA. Engineered for precision.</p>
+                    
+                    <div class="hero-actions reveal-text" style="animation-delay: 0.6s">
+                        <a href="#catalog" class="btn btn-primary">EXPLORE CATALOG</a>
+                        <a href="https://wa.me/5500000000000" class="btn btn-ghost">WHATSAPP DIRECT</a>
+                    </div>
+
+                    <div class="hero-metrics">
+                        <div class="metric-item">
+                            <span class="value" data-target="100" data-suffix="+">0</span>
+                            <span class="label">Proprietary Models</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="value" data-target="24" data-suffix="h">0</span>
+                            <span class="label">Quotation Turnaround</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="value" data-target="0.1" data-suffix="mm">0</span>
+                            <span class="label">Layer Resolution</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="hero-badges">
-                    <div class="hero-badge glass-card">
-                        <span class="badge-value text-accent" data-target="100" data-suffix="+">0</span>
-                        <span class="badge-label">Modelos</span>
-                    </div>
-                    <div class="hero-badge glass-card">
-                        <span class="badge-value text-accent" data-target="24" data-suffix="h">0</span>
-                        <span class="badge-label">Orçamento</span>
-                    </div>
-                    <div class="hero-badge glass-card">
-                        <span class="badge-value text-accent" data-target="100" data-suffix="%">0</span>
-                        <span class="badge-label">Qualidade</span>
-                    </div>
+                <div class="hero-visual">
+                    <div class="blueprint-grid"></div>
                 </div>
             </div>
         </div>
-        
-        <div class="scroll-indicator bounce-infinite">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
-        </div>
-    </section>
+    </header>
 
-    <!-- MATERIAIS -->
+    <!-- MATERIALS SECTION -->
     <section id="materials" class="section">
         <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title font-space bold">Nossos Materiais</h2>
-                <p class="text-secondary">Trabalhamos com os melhores polímeros para garantir durabilidade e acabamento.</p>
-            </div>
-            
-            <div class="materials-grid">
-                <div class="material-card glass-card reveal">
-                    <h3 class="material-name font-space bold">PLA (Poliácido Láctico)</h3>
-                    <p class="text-secondary">Ideal para peças decorativas, protótipos visuais e objetos com detalhes complexos. Amigável ao meio ambiente e com ótimo acabamento superficial.</p>
-                    <div class="material-list">
-                        <div class="material-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>Excelente detalhamento</span>
-                        </div>
-                        <div class="material-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>Baixa deformação</span>
-                        </div>
-                        <div class="material-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>Variedade de cores vibrantes</span>
-                        </div>
+            <div class="materials-layout">
+                <div class="material-card reveal-card">
+                    <span class="overline">Material Specification</span>
+                    <h3 class="section-title">PLA Polyacid</h3>
+                    <p class="text-secondary">Optimal for aesthetic fidelity and intricate geometric complexity. Sourced from sustainable biopolymers.</p>
+                    
+                    <div class="material-specs">
+                        <div class="spec-item"><span class="label">Surface Finish</span><span class="val">Ultra-Smooth</span></div>
+                        <div class="spec-item"><span class="label">Dimensional Accuracy</span><span class="val">± 0.05mm</span></div>
+                        <div class="spec-item"><span class="label">Best For</span><span class="val">Display & Design</span></div>
                     </div>
+                    <span class="material-bg-text">PLA</span>
                 </div>
-                
-                <div class="material-card glass-card reveal">
-                    <h3 class="material-name font-space bold">PETG (Polietileno Tereftalato)</h3>
-                    <p class="text-secondary">Equilíbrio perfeito entre facilidade de impressão e resistência mecânica. Indicado para peças técnicas, suportes e utilitários de uso diário.</p>
-                    <div class="material-list">
-                        <div class="material-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>Alta resistência ao impacto</span>
-                        </div>
-                        <div class="material-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>Resistência química e térmica</span>
-                        </div>
-                        <div class="material-item">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>Seguro para contato com alimentos</span>
-                        </div>
+
+                <div class="material-card reveal-card stagger-1">
+                    <span class="overline">Technical Grade</span>
+                    <h3 class="section-title">PETG Copolyester</h3>
+                    <p class="text-secondary">Engineering-grade durability with superior impact resistance and thermal stability.</p>
+                    
+                    <div class="material-specs">
+                        <div class="spec-item"><span class="label">Impact Resistance</span><span class="val">High</span></div>
+                        <div class="spec-item"><span class="label">Thermal Threshold</span><span class="val">80°C</span></div>
+                        <div class="spec-item"><span class="label">Best For</span><span class="val">Functional Parts</span></div>
                     </div>
+                    <span class="material-bg-text">PETG</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CATALOGO -->
-    <section id="catalog" class="section" style="background: rgba(255,255,255,0.02)">
+    <!-- CATALOG SECTION -->
+    <section id="catalog" class="section">
         <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title font-space bold">Nosso Catálogo</h2>
-                <p class="text-secondary">Explore nossas coleções e encontre a peça perfeita para você.</p>
-            </div>
-            
-            <div id="catalog-filters" class="catalog-filters reveal">
-                <!-- Pills generated by JS -->
+            <div class="catalog-header">
+                <div>
+                    <span class="overline">Inventory</span>
+                    <h2 class="section-title">Digital Library</h2>
+                </div>
+                <div id="catalog-filters" class="catalog-filters">
+                    <!-- Filters via JS -->
+                </div>
             </div>
             
             <div id="catalog-grid" class="catalog-grid">
-                <!-- Cards generated by JS -->
+                <!-- Items via JS -->
             </div>
         </div>
     </section>
 
-    <!-- DIFERENCIAIS -->
+    <!-- ADVANTAGES (DIFFERENTIALS) -->
     <section id="about" class="section">
         <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title font-space bold">Por que a Layer3D Labs?</h2>
-                <p class="text-secondary">Compromisso com a inovação e satisfação em cada camada impressa.</p>
-            </div>
+            <div class="accent-line"></div>
+            <h2 class="section-title">The Technical Edge</h2>
             
-            <div class="differentials-grid">
-                <div class="diff-card glass-card reveal">
-                    <div class="diff-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    </div>
-                    <div class="diff-content">
-                        <h4 class="font-space bold">Qualidade Garantida</h4>
-                        <p class="text-secondary">Inspeção rigorosa em cada peça produzida para garantir que atenda aos seus padrões.</p>
-                    </div>
+            <div class="diff-list">
+                <div class="diff-item reveal-card">
+                    <span class="diff-num">01 /</span>
+                    <h4 class="diff-title">Material Integrity</h4>
+                    <p class="diff-desc">We utilize only high-fidelity filaments tested for cross-layer adhesion and structural strength.</p>
                 </div>
-                
-                <div class="diff-card glass-card reveal">
-                    <div class="diff-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    </div>
-                    <div class="diff-content">
-                        <h4 class="font-space bold">Materiais Premium</h4>
-                        <p class="text-secondary">Utilizamos apenas filamentos de alta performance de fornecedores certificados.</p>
-                    </div>
+                <div class="diff-item reveal-card stagger-1">
+                    <span class="diff-num">02 /</span>
+                    <h4 class="diff-title">Precision Calibration</h4>
+                    <p class="diff-desc">Our machines undergo daily Z-axis and extrusion calibration for sub-millimeter consistency.</p>
                 </div>
-                
-                <div class="diff-card glass-card reveal">
-                    <div class="diff-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-                    </div>
-                    <div class="diff-content">
-                        <h4 class="font-space bold">Entrega em Todo Brasil</h4>
-                        <p class="text-secondary">Logística otimizada para que seu pedido chegue rápido e seguro em qualquer lugar.</p>
-                    </div>
+                <div class="diff-item reveal-card stagger-2">
+                    <span class="diff-num">03 /</span>
+                    <h4 class="diff-title">Global Logistics</h4>
+                    <p class="diff-desc">Custom shock-resistant packaging ensures your prints arrive in pristine condition anywhere.</p>
                 </div>
-                
-                <div class="diff-card glass-card reveal">
-                    <div class="diff-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    </div>
-                    <div class="diff-content">
-                        <h4 class="font-space bold">Orçamento em 24h</h4>
-                        <p class="text-secondary">Não perca tempo esperando. Respondemos sua solicitação de forma ágil e transparente.</p>
-                    </div>
+                <div class="diff-item reveal-card stagger-3">
+                    <span class="diff-num">04 /</span>
+                    <h4 class="diff-title">Expert Support</h4>
+                    <p class="diff-desc">Consultation on geometry optimization and material selection for every unique project.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA BANNER -->
-    <section id="contact" class="cta-section">
-        <div class="cta-glow"></div>
-        <div class="container reveal">
-            <h2 class="cta-title font-space bold">Pronto para imprimir sua ideia?</h2>
-            <p class="cta-subtitle">Fale com a nossa equipe no WhatsApp e receba seu orçamento personalizado em até 24 horas.</p>
-            <a href="https://wa.me/5500000000000" class="btn btn-primary shimmer-btn" style="padding: 20px 48px; font-size: 1.25rem;">Solicitar Orçamento Agora</a>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
+    <!-- CTA FOOTER -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-info">
-                    <div class="footer-logo logo">
-                        <span style="color: #fff">Layer3D</span><span style="color: var(--accent)">Labs</span>
+            <div class="footer-layout">
+                <div>
+                    <div class="logo" style="margin-bottom: var(--space-md)">
+                        <span class="logo-dot"></span>
+                        <span>LAYER3D<span style="color: var(--text-muted)">LABS</span></span>
                     </div>
-                    <p class="footer-tagline">Tecnologia e precisão em impressão 3D para transformar seus projetos em realidade.</p>
+                    <p class="text-secondary" style="max-width: 300px">Advanced Manufacturing Studio. São Paulo, Brazil. Worldwide Shipping.</p>
                 </div>
                 
-                <div class="footer-links">
-                    <h5>Páginas</h5>
-                    <ul>
-                        <li><a href="#">Início</a></li>
-                        <li><a href="#catalog">Catálogo</a></li>
-                        <li><a href="#about">Sobre nós</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h5>Materiais</h5>
-                    <ul>
-                        <li><a href="#materials">PLA Premium</a></li>
-                        <li><a href="#materials">PETG Técnico</a></li>
-                        <li><a href="#materials">Cores Disponíveis</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h5>Contato</h5>
-                    <ul>
-                        <li><a href="https://wa.me/5500000000000">WhatsApp</a></li>
-                        <li><a href="mailto:contato@layer3dlabs.com">E-mail</a></li>
-                        <li><a href="https://instagram.com/layer3dlabs">Instagram</a></li>
-                    </ul>
+                <div class="footer-nav">
+                    <div class="footer-col">
+                        <h5>SYSTEM</h5>
+                        <ul>
+                            <li><a href="#">Status</a></li>
+                            <li><a href="#materials">Materials</a></li>
+                            <li><a href="#catalog">Inventory</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>CONTACT</h5>
+                        <ul>
+                            <li><a href="https://wa.me/5500000000000">WhatsApp</a></li>
+                            <li><a href="mailto:ops@layer3dlabs.com">Operations</a></li>
+                            <li><a href="#">Instagram</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>LEGAL</h5>
+                        <ul>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Terms</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2026 Layer3D Labs. Todos os direitos reservados.</p>
-                <div class="social-links">
-                    <a href="https://instagram.com/layer3dlabs" class="text-accent">@layer3dlabs</a>
-                </div>
+            <div class="spec-item" style="border-top: 1px solid var(--border-glass); border-bottom: none; padding-top: var(--space-md)">
+                <span class="label">© 2026 LAYER3D LABS</span>
+                <span class="val">EST. 2020</span>
             </div>
         </div>
     </footer>
