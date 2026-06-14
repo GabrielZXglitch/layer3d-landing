@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <h4 class="product-title font-display">${item.name}</h4>
                 <p class="product-desc">${item.desc}</p>
-                <a href="https://instagram.com/layer3dlabs" target="_blank" class="btn btn-ghost shimmer-btn" style="width:100%; padding: 10px;">DM no Instagram</a>
+                <a href="https://instagram.com/layer3dlabs" target="_blank" class="btn btn-ghost shimmer-btn" style="width:100%; padding: 10px;">Orçamento</a>
             `;
             gridContainer.appendChild(card);
         });
